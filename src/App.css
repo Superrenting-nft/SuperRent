@@ -1,0 +1,42 @@
+
+.main-container {
+  flex: column; 
+  flex-direction: column;
+
+}
+
+#nav-style {
+  background: rgb(255,44,0);
+  background: radial-gradient(circle, rgba(255,44,0,0.8561799719887955) 0%, rgba(1,7,97,0.9066001400560224) 100%);
+}
+.link{
+  font-family: "cursive";
+  font-size: 24px;
+  padding:2px;
+}
+
+#nav-style li{
+  color: white;
+} 
+
+#form-content{
+  height:;
+  margin:;
+}
+.title {
+  font-size: 2rem;
+  text-align: center !important;
+  margin-top: 10%;
+  color: #120a8f;
+  font-weight: bold;
+}
+
+.content {
+  background-color: white;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
