@@ -21,7 +21,7 @@ const { isAddress, getAddress, formatUnits, parseUnits } = utils;
 //
 // Select the network you want to deploy to here:
 //
-const defaultNetwork = "localhost";
+const defaultNetwork = "rinkeby";
 
 function mnemonic() {
   try {
@@ -105,15 +105,6 @@ module.exports = {
             runs: 200
           }
         }
-      },
-      {
-        version: "0.6.7",
-        settings: {
-          optimizer: {
-            enabled: true,
-            runs: 200
-          }
-        }
       }
     ],
 
@@ -125,7 +116,7 @@ module.exports = {
   }
 };
 
-const DEBUG = false;
+const DEBUG = true;
 
 function debug(text) {
   if (DEBUG) {

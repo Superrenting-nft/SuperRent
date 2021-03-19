@@ -5,18 +5,35 @@ const { config, ethers, tenderly, run } = require("hardhat");
 const { utils } = require("ethers");
 const R = require("ramda");
 
+const SuperfluidSDK = require("@superfluid-finance/js-sdk");
+const { setWeb3Provider } = require("@decentral.ee/web3-helpers/src/config");
+const { Web3Provider } = require("@ethersproject/providers");
+const { useUserProvider } = require("");
+
 const main = async () => {
 
   console.log("\n\n 📡 Deploying...\n");
 
-  const yourContract = await deploy("YourContract") // <-- add in constructor args like line 19 vvvv
+  console.log('****** INIT SUPERFLUID NFT DEPLOYMENT ******');
+  bob = '0xeA4ca1270Cc91aC072c3b1d273dA95Ce8d024fB5';
+  alice = '0x014b5734E611dAf1303F199377d3FDC682c87b20';
 
-  //const yourContract = await ethers.getContractAt('YourContract', "0xaAC799eC2d00C013f1F11c37E654e59B0429DF6A") //<-- if you want to instantiate a version of a contract at a specific address!
-  //const secondContract = await deploy("SecondContract")
+  console.log('--> BOB Address: ', bob);
+  console.log('--> ALICE Address: ', alice);
 
-  // const exampleToken = await deploy("ExampleToken")
-  // const examplePriceOracle = await deploy("ExamplePriceOracle")
-  // const smartContractWallet = await deploy("SmartContractWallet",[exampleToken.address,examplePriceOracle.address])
+  const version = "v1";
+  setWeb3Provider(web3.currentProvider);
+  const sf = new SuperfluidSDK.Framework({
+    web3,
+    version,
+    tokens: ["fDAI"]
+  });
+
+  await sf.initialize();
+
+  const tokenERC721 = await ethers.getContractAt('ERC721Defi', "0x6Edf7e4Ec007F7714bDE2f8F057b885253c6C126") //<-- if you want to instantiate a version of a contract at a specific address!
+  let metadata = '{"name": "first nft", "description: "this is our first nft", "image": "https://ipfs.io/ipfs/QmdJmFhB84vpP8tVb3ybTtHToX2VAkXJRoaQZr2c8h64GH" }';
+  await erc721.mint(10000, "QmdJmFhB84vpP8tVb3ybTtHToX2VAkXJRoaQZr2c8h64GH", metadata, { from: bob });
 
   /*
   //If you want to send value to an address from the deployer
@@ -26,7 +43,6 @@ const main = async () => {
     value: ethers.utils.parseEther("0.001")
   })
   */
-
 
   /*
   //If you want to send some ETH to a contract on deploy (make your constructor payable!)
