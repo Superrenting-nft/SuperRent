@@ -65,6 +65,7 @@ function WalletButton({ provider, loadWeb3Modal, logoutOfWeb3Modal }) {
 }
 
 const getSuperClient = async provider => {
+  console.log('PROVIDER: ', provider);
   const sf = new SuperfluidSDK.Framework({
     ethers: provider,
     tokens: ["fDAI"]
@@ -78,14 +79,14 @@ function App() {
   const [provider, loadWeb3Modal, logoutOfWeb3Modal] = useWeb3Modal();
   const web3 = new Web3(window.ethereum);
   const config = {
-    erc721: "0x6Edf7e4Ec007F7714bDE2f8F057b885253c6C126"
+    erc721: "0x76E195437534620106a2Ef736F8C8491159dC640"
   };
   const img = useRef(null);
   let v;
   let r;
   let s;
 
-  const NFTId = 7;
+  const NFTId = 10;
 
   const mint = useCallback(async () => {
     console.log(abis.erc721);
@@ -107,68 +108,61 @@ function App() {
     );
     console.log(metadataCid);
     const c = new web3.eth.Contract(abis.erc721.abi, config.erc721);
-    const nonceTx = await c.methods
-      .getNonceRent()
-      .call({ from: window.ethereum.selectedAddress });
-    console.log(nonceTx);
-    console.log("Nonce above");
 
     const tx = await c.methods
       .mint(NFTId, metadataCid)
       .send({ from: window.ethereum.selectedAddress });
     console.log(tx);
 
-    // Creating Flow
-    let messageToSign =
-      config.erc721.toLowerCase() +
-      `. Ids: ${NFTId},. price: ` +
-      web3.utils.toWei("2") +
-      `. nonce: ${nonceTx}`;
-    console.log("RENT MESSAGE TO SIGN FROM CLIENT: ", messageToSign);
-    console.log(provider);
-    var accounts = await web3.eth.getAccounts();
-    // let { signature, messageHash, v, r, s } = await web3.eth.personal.sign(
-    //   messageToSign,
-    //   accounts[0]
-    // );
-    let r = await web3.eth.personal.sign(
-      messageToSign,
-      window.ethereum.selectedAddress
-    );
-    console.log(r);
-    console.log(r.signature);
-    console.log(r.messageHash);
-    console.log(r.v);
-    console.log(r.r);
-    console.log(r.s);
-    console.log(accounts);
   });
+
+  const putForRent = async () => {
+    const c = new web3.eth.Contract(abis.erc721.abi, config.erc721);
+
+    const tx = await c.methods
+    .putForRent(NFTId, web3.utils.toWei('1'))
+    .send({ from: window.ethereum.selectedAddress });
+
+    console.log(tx);
+  }
 
   const rentNFT = async () => {
     const superClient = await getSuperClient(provider);
     console.log(superClient);
     console.log("Client");
-    const c = new web3.eth.Contract(abis.erc721.abi, config.erc721);
-    const nonceTx = await c.methods
-      .getNonceRent()
-      .call({ from: window.ethereum.selectedAddress });
-    console.log(nonceTx);
 
-    const accounts = await web3.eth.getAccounts();
-    console.log(NFTId);
-    console.log([[NFTId], web3.utils.toWei("1"), nonceTx, v, r, s]);
+    console.log(NFTId, web3.utils.toWei("1"));
+    console.log('ENCODE PARAMETERS: ', web3.eth.abi.encodeParameters(
+      ["uint256", "uint256"],
+      [NFTId, web3.utils.toWei("1")]
+    ));
+
+    console.log('SENDER: ', window.ethereum.selectedAddress);
+    console.log('SUPERTOKEN: ', superClient.tokens.fDAIx.address);
+
     const flowTx = await superClient.cfa.createFlow({
-      superToken: superClient.tokens.fDAIx,
+      superToken: superClient.tokens.fDAIx.address,
       sender: window.ethereum.selectedAddress,
       receiver: config.erc721,
-      flowRate: "1000000000000000",
+      flowRate: "277777777777778",
       userData: web3.eth.abi.encodeParameters(
-        ["uint256[]", "uint256", "uint32", "uint8", "bytes32", "bytes32"],
-        [[NFTId], web3.utils.toWei("1"), nonceTx, v, r, s]
+        ["uint256", "uint256"],
+        [NFTId, web3.utils.toWei("1")]
       )
     });
     console.log(flowTx);
   };
+
+  const returnNFT = async() => {
+    const superClient = await getSuperClient(provider);
+
+    const flowTx = await superClient.cfa.deleteFlow({
+      superToken: superClient.tokens.fDAIx.address,
+      sender: window.ethereum.selectedAddress,
+      receiver: config.erc721,
+      by: window.ethereum.selectedAddress
+    });
+  }
 
   React.useEffect(() => {
     if (!loading && !error && data && data.transfers) {
@@ -192,7 +186,9 @@ function App() {
         </p>
         {/* Remove the "hidden" prop and open the JavaScript console in the browser to see what this function does */}
         <Button onClick={mint}>Mint NFT</Button>
+        <Button onClick={putForRent}>Put for rent</Button>
         <Button onClick={rentNFT}>Rent NFT</Button>
+        <Button onClick={returnNFT}>Return NFT</Button>
         <Link
           href="https://ethereum.org/developers/#getting-started"
           style={{ marginTop: "8px" }}
