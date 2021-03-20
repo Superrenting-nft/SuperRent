@@ -12,8 +12,10 @@
     margin-bottom: 5px;
 }
 
+
 .container {
     transform: translateY(-100%);
+    margin-top: 400px;
 }
 
 .container p {
@@ -22,10 +24,9 @@
 }
 
 .drop-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
+    display: flex; 
+    
+    /* margin: 10px; */
     width: 400px;
     height: 200px;
     border: 4px dashed #4aa1f3;
@@ -38,7 +39,7 @@
     background-size: 100%;
     text-align: center;
     margin: 0 auto;
-    padding-top: 20px;
+    padding-top: 30px;
 }
 
 .drop-message {
@@ -73,16 +74,16 @@
 }
   
 .file-display-container {
-    position: fixed;
-    width: 805px;
+    /* position: fixed; */
+    width: 705px;
 }
   
 .file-status-bar{
     width: 100%;
     vertical-align:top;
-    margin-top: 10px;
+    /* margin-top: 200px; */
     margin-bottom: 20px;
-    position: relative;
+    /* position: relative; */
     line-height: 50px;
     height: 50px;
 }
@@ -102,7 +103,7 @@
     border-radius: 2px;
     box-shadow: 1px 1px 2px #abc;
     color: #fff;
-    background: #0080c8;
+    background: #900f0f;
     text-transform: uppercase;
 }
   
@@ -110,7 +111,7 @@
     display: inline-block;
     vertical-align:top;
     margin-left: 50px;
-    color: #4aa1f3;
+    color: #0d0f12;
 }
 
 .file-error {
@@ -259,3 +260,4 @@
 .error {
     color: red;
 }
+

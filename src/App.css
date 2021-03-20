@@ -1,4 +1,19 @@
 
+.main-container {
+  flex-direction: column;
+  
+  
+}
+.content {
+  background-color: white;
+  min-height: 0vh;
+  display: flex;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  
+  
+}
 
 #nav-style {
   background: rgb(255,44,0);
@@ -14,24 +29,15 @@
   color: white;
 } 
 
-#form-content{
-  height:;
-  margin:;
-}
-.title {
-  font-size: 2rem;
-  text-align: center !important;
-  margin-top: 10%;
-  color: #120a8f;
-  font-weight: bold;
+.form-content{
+  margin: 0px;
+  padding: 0;
 }
 
-.content {
-  background-color: white;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.buttons{
+  margin: 20px;
+  padding: 20px;
 }
+
+
 

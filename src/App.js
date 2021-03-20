@@ -22,7 +22,6 @@ function App() {
         loadWeb3Modal={loadWeb3Modal}
         logoutOfWeb3Modal={logoutOfWeb3Modal}
       />
-      <p className="title">Drag and Drop Your NFT Image </p>
       <div className="content">
         <Dropzone />
         <NftForm />

@@ -51,7 +51,7 @@ const mint = async () => {
   };
 
  return (
-                <div id="form-content">
+                <div className="form-content">
                     <Form>
                         <Form.Group controlId="exampleForm.ControlInput1">
                             <Form.Label>NFT Id :</Form.Label>
@@ -69,13 +69,13 @@ const mint = async () => {
                             <Form.Control as="textarea" rows={4} />
                         </Form.Group>
                     </Form>
-                    <Button variant="info" type="submit" onClick={mint}>Mint</Button>
+                    <Button class="buttons" variant="info" type="submit" onClick={mint}>Mint</Button>
                     <br />
-                    <Button variant="secondary"> List For Sale </Button>
+                    <Button class="buttons" variant="secondary"> List For Sale </Button>
                     <br />
-                    <Button variant="success">Renting</Button>
+                    <Button class="buttons" variant="success">Renting</Button>
                     <br />
-                    <Button variant="warning">Getting Back</Button>
+                    <Button class="buttons" variant="warning">Getting Back</Button>
                     <br />
 
                 </div>
