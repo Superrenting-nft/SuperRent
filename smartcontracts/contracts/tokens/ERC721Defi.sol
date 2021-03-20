@@ -96,7 +96,7 @@ contract ERC721Defi is SuperAppBase, ERC721, Ownable {
         ISuperToken /*superToken*/,
         address /*agreementClass*/,
         bytes32 /*agreementId*/,
-        bytes calldata /*agreementData*/,
+        bytes calldata agreementData,
         bytes calldata ctx
     )
         external
@@ -105,14 +105,15 @@ contract ERC721Defi is SuperAppBase, ERC721, Ownable {
         override
         returns (bytes memory /*cbdata*/)
     {
-        _checkValidRent(ctx);
+        (address sender,) = abi.decode(agreementData, (address, address));
+        _checkValidRent(ctx, sender);
     }
 
     function beforeAgreementUpdated(
         ISuperToken /*superToken*/,
         address /*agreementClass*/,
         bytes32 /*agreementId*/,
-        bytes calldata /*agreementData*/,
+        bytes calldata agreementData,
         bytes calldata ctx
     )
         external
@@ -121,7 +122,8 @@ contract ERC721Defi is SuperAppBase, ERC721, Ownable {
         override
         returns (bytes memory /*cbdata*/)
     {
-        _checkValidRent(ctx);
+        (address sender,) = abi.decode(agreementData, (address, address));
+        _checkValidRent(ctx, sender);
     }
 
     function afterAgreementCreated(
@@ -177,12 +179,15 @@ contract ERC721Defi is SuperAppBase, ERC721, Ownable {
         return _recoverToken(ctx, sender);
     }
 
-    function _checkValidRent(bytes calldata ctx) internal view {
+    function _checkValidRent(bytes calldata ctx, address sender) internal view {
         bytes memory userData = _host.decodeCtx(ctx).userData;
         (uint256 tokenId, uint256 price) = abi.decode(userData, (uint256, uint256));
         
         require(_tokensInfo[tokenId] == address(0), "TokenNotAvailable");
         require(price > 0, "WrongValueSent");
+
+        (uint256 startTime, int96 flowRate,,) = _cfa.getFlow(_cashToken, sender, ownerOf(tokenId));
+        require(price >= uint256(flowRate), "BadPrice");
     }
 
     function _rentToken(

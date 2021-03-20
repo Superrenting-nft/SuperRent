@@ -11,13 +11,12 @@ const fs = require('fs');
 async function doDeploy(deployer, network, accounts) {
 
     console.log('****** INIT SUPERFLUID NFT DEPLOYMENT ******');
-    bob = '0xeA4ca1270Cc91aC072c3b1d273dA95Ce8d024fB5';
-    alice = '0x014b5734E611dAf1303F199377d3FDC682c87b20';
+    bob = accounts[0];
+    alice = accounts[1];
 
     console.log('--> BOB Address: ', bob);
     console.log('--> ALICE Address: ', alice);
 
-    const privatekey = fs.readFileSync(".privatekey").toString().trim();
     const version = "v1";
     setWeb3Provider(web3.currentProvider);
 
@@ -28,7 +27,6 @@ async function doDeploy(deployer, network, accounts) {
     });
 
     await sf.initialize();
-
 
     const dai = await DaiToken.at(sf.tokens.fDAI.address);
     const daix = sf.tokens.fDAIx;
@@ -58,35 +56,30 @@ async function doDeploy(deployer, network, accounts) {
     console.log('--> ERC721 Token address:', event.tokenAddress);                                     
 
 
-    // 3. Mint 2 new NFTs
+    // 3. Mint a new NFT
     let erc721 = await ERC721Defi.at(event.tokenAddress);
     let metadata = '{"name": "first nft", "description: "this is our first nft", "image": "https://ipfs.io/ipfs/QmdJmFhB84vpP8tVb3ybTtHToX2VAkXJRoaQZr2c8h64GH" }';
     await erc721.mint(1, metadata, { from: bob });
     console.log('--> MINTED NFT WITH ID 1');
-    await erc721.mint(2, "", { from: bob });
-    console.log('--> MINTED NFT WITH ID 2');
 
-    // 4. Create a gas-less rent post
-    // 1 DAIx per hour are 277777777777778????
-    let messageToSign = erc721.address.toLowerCase() + ". Ids: 1,. price: " + web3.utils.toWei('1') + ". nonce: 1";
-    console.log('RENT MESSAGE TO SIGN FROM CLIENT: ', messageToSign);
-    let {signature, messageHash, v, r, s} = await web3.eth.accounts.sign(messageToSign, privatekey);
-    console.log('SIGNATURE: ', signature);
-    console.log('MESSAGE HASH: ', messageHash);
-    console.log('V: ', v);
-    console.log('R: ', r);
-    console.log('S: ', s);
+    // 4. Put the NFT for rent
+    await erc721.putForRent(1, 277777777777778);    // Put for rent for 1 DAIx per hour
 
     let ownerBefore = await erc721.ownerOf(1);
     console.log('--> NFT ID 1 OWNER BEFORE RENTING: ', ownerBefore);
 
-    // 5. Create a new flow with Superfluid to rent a token
+    balanceBob = await daix.balanceOf(bob);
+    console.log('--> SUPERFLUID DAIx BALANCE BOB:', balanceBob.toString());
+    balanceAlice = await daix.balanceOf(alice);
+    console.log('--> SUPERFLUID DAIx BALANCE ALICE:', balanceAlice.toString());
+
+    // 5. Create a new flow with Superfluid to rent the NFT
     await sf.cfa.createFlow({
         superToken: daix.address,
         sender: alice,
         receiver: event.tokenAddress,
-        flowRate: "1000000000000000",
-        userData: web3.eth.abi.encodeParameters(['uint256[]', 'uint256', 'uint32', 'uint8', 'bytes32', 'bytes32'], [[1], web3.utils.toWei("1"), 1, v, r, s])
+        flowRate: "277777777777778",
+        userData: web3.eth.abi.encodeParameters(['uint256', 'uint256'], [1, 277777777777778])
     });
 
     console.log('--> SUPERFLUID FLOW CREATED. NFT ID 1 RENTED');
@@ -96,17 +89,7 @@ async function doDeploy(deployer, network, accounts) {
     let ownerAfter = await erc721.ownerOf(1);
     console.log('--> NFT ID 1 OWNER AFTER RENTING: ', ownerAfter);
 
-    // NOT WORKING
-    let flowAliceToBob = (await sf.cfa.getFlow({superToken: daix.address, sender: alice, receiver: bob})).toString();
-    (async () => wad4human(flowAliceToBob))();
-    console.log('--> Flow debug Alice to Bob:', flowAliceToBob.toString());
-
-    balanceBob = await sf.cfa.getNetFlow({superToken: daix.address, account: bob});
-    console.log('--> SUPERFLUID DAIx BALANCE BOB:', balanceBob.toString());
-    balanceAlice = await sf.cfa.getNetFlow({superToken: daix.address, account: alice});
-    console.log('--> SUPERFLUID DAIx BALANCE ALICE:', balanceAlice.toString());
-
-    await new Promise(r => setTimeout(r, 60000));
+    await new Promise(r => setTimeout(r, 60000));   // We wait a minute to get some DAIx in the flow
 
     // 6. Finish the rent (and the flow)
     await sf.cfa.deleteFlow({
@@ -120,12 +103,10 @@ async function doDeploy(deployer, network, accounts) {
 
     ownerAfter = await erc721.ownerOf(1);
     console.log('--> NFT ID 1 OWNER AFTER RENTING FINISHED: ', ownerAfter);
-    ownerAfter = await erc721.ownerOf(2);
-    console.log('--> NFT ID 2 OWNER AFTER RENTING FINISHED: ', ownerAfter);
 
-    balanceBob = await sf.cfa.getNetFlow({superToken: daix.address, account: bob});
+    balanceBob = await daix.balanceOf(bob);
     console.log('--> SUPERFLUID DAIx BALANCE BOB:', balanceBob.toString());
-    balanceAlice = await sf.cfa.getNetFlow({superToken: daix.address, account: alice});
+    balanceAlice = await daix.balanceOf(alice);
     console.log('--> SUPERFLUID DAIx BALANCE ALICE:', balanceAlice.toString());
 
 }

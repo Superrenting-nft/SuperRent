@@ -1,5 +1,4 @@
 node_modules/
 build/
 .infura
-.privatekey
 .secret
