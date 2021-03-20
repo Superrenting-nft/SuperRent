@@ -22,7 +22,7 @@ const getNFTStorageClient = () => {
 function App() {
   const web3 = new Web3(window.ethereum);
   const config = {
-    erc721: "0x6Edf7e4Ec007F7714bDE2f8F057b885253c6C126",
+    erc721: "0x3f8CB69d9c0ED01923F11c829BaE4D9a4CB6c82C",
   };
   const [provider, loadWeb3Modal, logoutOfWeb3Modal] = useWeb3Modal();
   console.log("Here");
