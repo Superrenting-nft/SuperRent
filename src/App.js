@@ -5,6 +5,7 @@ import NftForm from "./components/NftForm";
 import Dropzone from "./dropzone/Dropzone";
 import { abis } from "@project/contracts";
 import useWeb3Modal from "./hooks/useWeb3Modal";
+import { CONFIG } from "./constants";
 
 import { NFTStorage } from "nft.storage";
 const Web3 = require("web3");
@@ -21,9 +22,6 @@ const getNFTStorageClient = () => {
 
 function App() {
   const web3 = new Web3(window.ethereum);
-  const config = {
-    erc721: "0x3f8CB69d9c0ED01923F11c829BaE4D9a4CB6c82C",
-  };
   const [provider, loadWeb3Modal, logoutOfWeb3Modal] = useWeb3Modal();
   console.log("Here");
   console.log(provider);
@@ -34,7 +32,7 @@ function App() {
     // TODO pass form data into mint
 
     console.log(abis.erc721);
-    console.log(config.erc721);
+    console.log(CONFIG.erc721);
     const client = getNFTStorageClient();
     // console.log(img);
     // const resp = await fetch(img.current.src);
@@ -51,7 +49,7 @@ function App() {
     //   new Blob([JSON.stringify(metadata)])
     // );
     // console.log(metadataCid);
-    const c = new web3.eth.Contract(abis.erc721.abi, config.erc721);
+    const c = new web3.eth.Contract(abis.erc721.abi, CONFIG.erc721);
     const nonceTx = await c.methods
       .getNonceRent()
       .call({ from: window.ethereum.selectedAddress });
