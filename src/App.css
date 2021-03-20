@@ -1,9 +1,4 @@
 
-.main-container {
-  flex: column; 
-  flex-direction: column;
-
-}
 
 #nav-style {
   background: rgb(255,44,0);
@@ -33,7 +28,7 @@
 
 .content {
   background-color: white;
-  min-height: 90vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
