@@ -12,7 +12,6 @@
     margin-bottom: 5px;
 }
 
-
 .container {
     transform: translateY(-100%);
     margin-top: 400px;
@@ -24,8 +23,7 @@
 }
 
 .drop-container {
-    display: flex; 
-    
+    display: flex;  
     /* margin: 10px; */
     width: 400px;
     height: 200px;
