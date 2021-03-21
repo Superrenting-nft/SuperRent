@@ -1,0 +1,16 @@
+.rentPage--pagination {
+  display: flex;
+  list-style-type: none;
+}
+
+.rentPage--pagination {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.rentPage--cardContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  list-style-type: none;
+}
