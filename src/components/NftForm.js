@@ -54,6 +54,7 @@ const mint = async () => {
                 <div className="form-content">
                     <Form>
                         <Form.Group controlId="exampleForm.ControlInput1">
+                          <h1>Mint NFT</h1>
                             <Form.Label>NFT Id :</Form.Label>
                             <Form.Control onChange={handleIdChange} size="sm" type="id" placeholder="Number Id" />                            
                             </Form.Group>

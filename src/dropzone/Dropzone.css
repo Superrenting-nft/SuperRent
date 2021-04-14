@@ -13,8 +13,7 @@
 }
 
 .container {
-    transform: translateY(-100%);
-    margin-top: 400px;
+    margin-top: 50px;
 }
 
 .container p {

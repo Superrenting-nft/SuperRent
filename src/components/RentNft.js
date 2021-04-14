@@ -99,6 +99,7 @@ const RentNft = ({ provider }) => {
     >
       {(formProps) => (
         <Form className="createSubscriptionPage--formContainer">
+        <h3>Renting NFT</h3>
           <Input label="NFT Id" name="nftId" type="text" />
           <div className="createSubscriptionPage--submitContainer">
             <button

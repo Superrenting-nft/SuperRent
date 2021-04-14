@@ -8,6 +8,7 @@ export const Button = styled.button`
   color: #282c34;
   cursor: pointer;
   font-size: 16px;
+  font-weight:500;
   text-align: center;
   text-decoration: none;
   margin: 5px 20px;

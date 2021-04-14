@@ -22,17 +22,13 @@ function App() {
         loadWeb3Modal={loadWeb3Modal}
         logoutOfWeb3Modal={logoutOfWeb3Modal}
       />
-      <div className="content">
+      
         <Dropzone />
-        <h1>Mint NFT</h1>
         <NftForm />
-        <h1>Put NFT for rent</h1>
         <PutForRentForm />
-        <h1>Rent an NFT</h1>
         <RentNft provider={provider} />
-        <h1>Return NFT</h1>
         <ReturnNft provider={provider} />
-      </div>
+      
     </div>
   );
 }

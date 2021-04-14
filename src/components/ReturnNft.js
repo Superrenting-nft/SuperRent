@@ -15,6 +15,7 @@ const Input: FunctionalComponent<any> = ({ label, ...props }) => {
 
   return (
     <div className="input--container">
+    <h1>Return NFT</h1>
       <label htmlFor={props.id || props.name}>{label}</label>
       <input className="input--input" {...field} {...props} />
       {meta.touched && meta.error ? (

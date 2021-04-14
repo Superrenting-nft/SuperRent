@@ -1,30 +1,23 @@
-
-.main-container {
-  flex-direction: column;
-  
-  
-}
-.content {
-  background: #fcfbfb;
-  border-radius: 20px;
-  box-shadow: 0 15px 30px 5px rgba(0, 0, 0, 0.3);
-  min-height: 10vh;
-  display: flex;
-  margin: 100px 450px;
-  align-items: center;
-  justify-content: center;
-  height: 400px;
-  padding: 4rem;
-  width: 800px;
-  padding-right: 10rem;
-    padding-left: 10rem;
-}
-
 #nav-style {
   position: inherit;
   background: rgb(255,44,0);
   background: radial-gradient(circle, rgba(255,44,0,0.8561799719887955) 0%, rgba(1,7,97,0.9066001400560224) 100%);
 }
+
+
+.main-container {
+  margin: 0;
+  padding: 0;
+}
+  
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
 .link{
   font-family: "cursive";
   font-size: 24px;
@@ -36,8 +29,10 @@
 } 
 
 .form-content{
-  margin: 0px;
-  padding: 0;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 500px;
+  
 }
 
 
