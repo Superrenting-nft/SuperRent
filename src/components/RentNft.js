@@ -1,5 +1,4 @@
 import React from "react";
-// import { Form, Button } from "react-bootstrap";
 import { abis } from "@project/contracts";
 import { Formik, Form, useField } from "formik";
 import * as Yup from "yup";
@@ -99,7 +98,7 @@ const RentNft = ({ provider }) => {
     >
       {(formProps) => (
         <Form className="createSubscriptionPage--formContainer">
-        <h3>Renting NFT</h3>
+        <h3>Return NFT</h3>
           <Input label="NFT Id" name="nftId" type="text" />
           <div className="createSubscriptionPage--submitContainer">
             <button

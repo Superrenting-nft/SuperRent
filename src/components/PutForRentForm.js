@@ -60,6 +60,7 @@ const PutForRentForm = () => {
     >
       {(formProps) => (
         <Form className="createSubscriptionPage--formContainer">
+        <h1>Renting Nft</h1>
           <Input label="NFT Id" name="nftId" type="text" />
           <Input label="Price" name="price" type="text" />
           <div className="createSubscriptionPage--submitContainer">

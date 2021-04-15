@@ -42,6 +42,6 @@ const ReturnNft = ({ provider }) => {
     console.log(flowTx);
   };
 
-  return <button onClick={returnNft}>Return NFT</button>;
+  return <button class="return-button" onClick={returnNft}>Return NFT</button>;
 };
 export default ReturnNft;

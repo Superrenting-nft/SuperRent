@@ -7,12 +7,12 @@ const Header = (props) => {
   return (
     <div id="nav-style">
       <Navbar
-        bg="light"
+        bg="dark"
         expand="lg"
         style={{ display: "flex", justifyContent: "space-between" }}
       >
-        <Navbar.Brand className="link" style={{ color: "white" }}>
-          SuperRentingNFT
+        <Navbar.Brand className="link" >
+          <span style={{color:"white"}}>Super</span><span style={{color:"purple"}}>Renting</span>
         </Navbar.Brand>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto" variant="pills">

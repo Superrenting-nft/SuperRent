@@ -1,11 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;700&display=swap');
+
 #nav-style {
   position: inherit;
-  background: rgb(255,44,0);
-  background: radial-gradient(circle, rgba(255,44,0,0.8561799719887955) 0%, rgba(1,7,97,0.9066001400560224) 100%);
+  padding-left: 1.5rem;
+  font-family: 'Roboto';
+  font-weight: 700;
+  text-shadow: 1px 1px black;
+  background: rgb(0,117,255);
+background: linear-gradient(90deg, rgba(0,117,255,1) 22%, rgba(134,255,60,1) 56%, rgba(207,100,252,1) 86%); 
+}
+#nav-style h1 {
+  color: black;
 }
 
-
 .main-container {
+  /* background: rgb(4,1,32);
+  background: linear-gradient(45deg, rgba(4,1,32,1) 6%, rgba(33,0,128,1) 87%);  */
   margin: 0;
   padding: 0;
 }
@@ -15,8 +25,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-left: auto;
+  margin-right: auto;
 }
-
+.form-container{
+  display: flex;
+  flex-direction: column;
+}
 
 .link{
   font-family: "cursive";
@@ -31,10 +46,55 @@
 .form-content{
   flex-direction: column;
   align-items: center;
-  margin-left: 500px;
+  margin: auto;
+  padding: auto;
+ 
   
 }
 
+.createSubscriptionPage--formContainer{
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  padding: auto;
+}
 
+button {
+  width: auto;
+  margin: 0.1rem;
+  font-family: "Roboto";
+  padding: 0.2rem 1rem;
+  font-weight: 500;
+  font-size: 1.0rem;
+  cursor: pointer;
+  border: 1px solid
+
+}
+
+.return-button { 
+  /* height: 40px ;
+  width: 80px;
+   display: flex; */
+   margin-left: auto;
+  margin-right: auto;
+  
+  position: relative;
+  
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  outline: 0;
+  padding: 0.2rem 1rem;
+  text-align: center;
+  width: 30%;
+  background: rgb(255,167,66);
+  background: linear-gradient(45deg, rgba(255,167,66,1) 0%, rgba(255,45,45,1) 37%, rgba(186,48,255,1) 62%, rgba(0,232,212,1) 80%);
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 3rem;
+  font-weight: 500;
+  font-size: 1.0rem;
+  cursor: pointer;
+
+
+}
 
 
