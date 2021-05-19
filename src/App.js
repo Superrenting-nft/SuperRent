@@ -1,12 +1,22 @@
 import React, { useRef } from "react";
 import "./App.css";
 import Header from "./components/Header";
+
 import NftForm from "./components/NftForm";
 import PutForRentForm from "./components/PutForRentForm";
 import RentNft from "./components/RentNft";
+
 import ReturnNft from "./components/ReturnNft";
 import Dropzone from "./dropzone/Dropzone";
 import useWeb3Modal from "./hooks/useWeb3Modal";
+
+import styled from 'styled-components'
+import MarketPlaceIndex from './components/marketplace/MarketPlaceIndex'
+import Footer from './components/footer/Footer'
+
+
+
+import { BrowserRouter as Router, NavLink, Switch, Route } from 'react-router-dom'
 
 function App() {
   const [provider, loadWeb3Modal, logoutOfWeb3Modal] = useWeb3Modal();
@@ -29,6 +39,7 @@ function App() {
         <RentNft provider={provider} />
         <ReturnNft provider={provider} />
       </div>
+      <Footer />
     </div>
   );
 }
