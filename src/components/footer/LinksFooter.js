@@ -1,6 +1,6 @@
 import React from 'react'
 import { MainFooter, FooterLinks, LinksStyle } from './footer-global-style'
-import { LinkStyle } from '../global-styles/links-style'
+import { LinkStyle } from '../global-styles/link-style.jsx'
 
 export default function LinksFooter() {
     return (
