@@ -12,7 +12,6 @@ import LinksFooter from '../footer/LinksFooter'
 export default function HomePage() {
     return (
         <div>
-            <Header />
             <MarketPlace />
             <LorenIpsun />
             <LastRented />
