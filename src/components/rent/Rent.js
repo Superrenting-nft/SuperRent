@@ -1,14 +1,18 @@
 import React from 'react'
-import Dropzone from "./dropzone/Dropzone";
-import NftForm from "./nft/NftForm";
-import putForRent from "./Rent"
+import NftForm from "../NftForm";
+import PutForRent from "./Rent"
+import RentNft from '../RentNft'
+import ReturnNft from '../ReturnNft'
+import useWeb3Modal from "../../hooks/useWeb3Modal";
+import PutForRentForm from '../PutForRentForm'
+
 
 
 export default function Rent() {
+    const [provider] = useWeb3Modal();
     return (
         <div>
             <div class="form-container">
-                <Dropzone />
                 <NftForm />
                 <PutForRentForm />
                 <RentNft provider={provider} />

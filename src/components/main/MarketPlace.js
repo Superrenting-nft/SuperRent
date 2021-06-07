@@ -18,12 +18,9 @@ export default function MarketPlace() {
     const MainMarket = styled.div`
             display: flex;
             flex-direction:column;
-            width: 85%; 
-            background: rgb(131,58,180);
-background: linear-gradient(29deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+            background-color: grey;
             margin: auto; 
             padding: 20px;
-            border-radius: 2em;
         & > h1 { 
             margin: auto;
         }
@@ -76,7 +73,6 @@ const CardButton = styled.button`
     return (
         <MainMarket>
             <h1>Market Place</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
             <InnerMarketContent>
                 <CardMarketDiv>
                     <CardMarketContent>
@@ -121,9 +117,138 @@ const CardButton = styled.button`
                     </CardMarketContent>
                 </CardMarketDiv>
             </InnerMarketContent>
-            <GradientDiv>
-                <GradientButton>See The Offers</GradientButton>
-            </GradientDiv>
+            <InnerMarketContent>
+                <CardMarketDiv>
+                    <CardMarketContent>
+                        <Card.Body>
+                            <Card.Title>Market Place 1</Card.Title>
+                            <Card.Text>
+                            Some quick example text to build on the card title and make up the bulk of
+                            the card's content.
+                            </Card.Text>
+                            <CardButton>Rent</CardButton>
+                        </Card.Body>
+                        </CardMarketContent>
+                            <CardMarketContent>
+                                <Card.Body>
+                                    <Card.Title>Market Place 2</Card.Title>
+                                        <Card.Text>
+                                            Some quick example text to build on the card title and make up the bulk of
+                                            the card's content.
+                                        </Card.Text>
+                                    <CardButton>Rent</CardButton>
+                                </Card.Body>
+                            </CardMarketContent>
+                        <CardMarketContent>
+                            <Card.Body>
+                                <Card.Title>Market Place 3</Card.Title>
+                                    <Card.Text>
+                                        Some quick example text to build on the card title and make up the bulk of
+                                        the card's content.
+                                    </Card.Text>
+                                <CardButton>Rent</CardButton>
+                            </Card.Body>
+                        </CardMarketContent>
+                        <CardMarketContent>
+                        <Card.Body>
+                            <Card.Title>Market Place 4</Card.Title>
+                                <Card.Text>
+                                    Some quick example text to build on the card title and make up the bulk of
+                                    the card's content.
+                                </Card.Text>
+                            <CardButton>Rent</CardButton>
+                        </Card.Body>
+                    </CardMarketContent>
+                </CardMarketDiv>
+            </InnerMarketContent>
+            <InnerMarketContent>
+                <CardMarketDiv>
+                    <CardMarketContent>
+                        <Card.Body>
+                            <Card.Title>Market Place 1</Card.Title>
+                            <Card.Text>
+                            Some quick example text to build on the card title and make up the bulk of
+                            the card's content.
+                            </Card.Text>
+                            <CardButton>Rent</CardButton>
+                        </Card.Body>
+                        </CardMarketContent>
+                            <CardMarketContent>
+                                <Card.Body>
+                                    <Card.Title>Market Place 2</Card.Title>
+                                        <Card.Text>
+                                            Some quick example text to build on the card title and make up the bulk of
+                                            the card's content.
+                                        </Card.Text>
+                                    <CardButton>Rent</CardButton>
+                                </Card.Body>
+                            </CardMarketContent>
+                        <CardMarketContent>
+                            <Card.Body>
+                                <Card.Title>Market Place 3</Card.Title>
+                                    <Card.Text>
+                                        Some quick example text to build on the card title and make up the bulk of
+                                        the card's content.
+                                    </Card.Text>
+                                <CardButton>Rent</CardButton>
+                            </Card.Body>
+                        </CardMarketContent>
+                        <CardMarketContent>
+                        <Card.Body>
+                            <Card.Title>Market Place 4</Card.Title>
+                                <Card.Text>
+                                    Some quick example text to build on the card title and make up the bulk of
+                                    the card's content.
+                                </Card.Text>
+                            <CardButton>Rent</CardButton>
+                        </Card.Body>
+                    </CardMarketContent>
+                </CardMarketDiv>
+            </InnerMarketContent>
+            <InnerMarketContent>
+                <CardMarketDiv>
+                    <CardMarketContent>
+                        <Card.Body>
+                            <Card.Title>Market Place 1</Card.Title>
+                            <Card.Text>
+                            Some quick example text to build on the card title and make up the bulk of
+                            the card's content.
+                            </Card.Text>
+                            <CardButton>Rent</CardButton>
+                        </Card.Body>
+                        </CardMarketContent>
+                            <CardMarketContent>
+                                <Card.Body>
+                                    <Card.Title>Market Place 2</Card.Title>
+                                        <Card.Text>
+                                            Some quick example text to build on the card title and make up the bulk of
+                                            the card's content.
+                                        </Card.Text>
+                                    <CardButton>Rent</CardButton>
+                                </Card.Body>
+                            </CardMarketContent>
+                        <CardMarketContent>
+                            <Card.Body>
+                                <Card.Title>Market Place 3</Card.Title>
+                                    <Card.Text>
+                                        Some quick example text to build on the card title and make up the bulk of
+                                        the card's content.
+                                    </Card.Text>
+                                <CardButton>Rent</CardButton>
+                            </Card.Body>
+                        </CardMarketContent>
+                        <CardMarketContent>
+                        <Card.Body>
+                            <Card.Title>Market Place 4</Card.Title>
+                                <Card.Text>
+                                    Some quick example text to build on the card title and make up the bulk of
+                                    the card's content.
+                                </Card.Text>
+                            <CardButton>Rent</CardButton>
+                        </Card.Body>
+                    </CardMarketContent>
+                </CardMarketDiv>
+            </InnerMarketContent>
         </MainMarket>
     )
 }

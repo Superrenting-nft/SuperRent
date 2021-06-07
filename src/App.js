@@ -36,8 +36,6 @@ function App() {
           loadWeb3Modal={loadWeb3Modal}
           logoutOfWeb3Modal={logoutOfWeb3Modal}
         />
-        
-        
       </div>
       <HomePage />
       <Footer />

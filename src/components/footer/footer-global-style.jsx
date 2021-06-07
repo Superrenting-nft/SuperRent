@@ -24,10 +24,11 @@ justify-content: center;
 width: 30%;
 padding: auto;
 margin: 5rem;
-color: #fff;
+color: #000;
 
 & > a {
     margin: auto;
+    color: #000;
 }
 `;
 
