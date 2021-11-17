@@ -1,0 +1,17 @@
+.nftCard--layout {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+}
+
+.card--posterImg {
+  object-fit: scale-down;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.card--posterContainer {
+  width: 120px;
+  height: 110px;
+}

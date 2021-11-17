@@ -1,0 +1,3 @@
+export const CONFIG = {
+  erc721: "0x76E195437534620106a2Ef736F8C8491159dC640",
+};

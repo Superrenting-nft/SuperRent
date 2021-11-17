@@ -7,6 +7,7 @@ import RentNft from "./components/RentNft";
 import ReturnNft from "./components/ReturnNft";
 import Dropzone from "./dropzone/Dropzone";
 import useWeb3Modal from "./hooks/useWeb3Modal";
+import { CONFIG } from "./constants";
 
 function App() {
   const [provider, loadWeb3Modal, logoutOfWeb3Modal] = useWeb3Modal();
